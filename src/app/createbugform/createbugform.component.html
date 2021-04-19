@@ -1,0 +1,57 @@
+<div class="inputs">
+  <h1>BUG TRACKING SYSTEM</h1>
+
+  <h3>CREATE BUG</h3>
+  <label>Bug Name : </label>
+  <input [(ngModel)]="bug.name" /><br />
+  <label>Project ID : </label>
+  <input [(ngModel)]="bug.projectId" /><br />
+  <label>Module : </label>
+  <input [(ngModel)]="bug.module" /><br />
+  <label>Build Version </label>
+  <input [(ngModel)]="bug.buildVersion" /><br />
+  <label>Synopsis : </label>
+  <input [(ngModel)]="bug.synopsis" /><br />
+  <label>Product :</label>
+  <input [(ngModel)]="bug.product" /><br /><br>
+  <label>Description :</label>
+  <textarea [(ngModel)]="bug.description" rows="2" cols="22"> </textarea><br />
+  <label>Submitted Date : </label>
+  <input type="date" [(ngModel)]="bug.submittedOn" /><br />
+  <label>ETA : </label>
+  <input type="date" [(ngModel)]="bug.eta" /><br /><br /><br />
+  <div>
+    <label>Bug Status :</label>
+    <select [(ngModel)]="bug.status">
+      <option>NEW</option>
+    </select>
+  </div>
+  <div>
+    <label>Bug Priority :</label>
+    <select [(ngModel)]="bug.priority">
+      <option>CRITICAL</option>
+      <option>MAJOR</option>
+      <option>MINOR</option>
+    </select>
+  </div>
+  <div>
+    <label>Severity :</label>
+    <select [(ngModel)]="bug.priority">
+      <option>HIGH</option>
+      <option>MEDIUM</option>
+      <option>LOW</option>
+    </select>
+  </div>
+  <div>
+    <label>Type :</label>
+    <select [(ngModel)]="bug.priority">
+      <option>SYNTAX</option>
+      <option>COMPILE_TIME</option>
+      <option>RUNTIME</option>
+      <option>LOGICAL</option>
+      <option>FUNCTIONAL</option>
+      <option>CALCULATION</option>
+    </select>
+  </div>
+  <button class="button1" (click)="save()">Save</button>
+</div>

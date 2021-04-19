@@ -10,17 +10,16 @@ import { BugService } from '../bug.service';
 export class CreatebugformComponent implements OnInit {
   title:string = 'Createbugform';
   bug:Bug=new Bug();
-  bugArray:Bug[]=[];
+  bugArray:any;
 
   constructor(private bugService:BugService) { }
 
   save(){
-    this.bugArray.push(Object.assign({}, this.bug));
     console.log(this.bug.name);
-
-    const promise = this.bugService.save(this.bug);
-    promise.subscribe(response=>{
+    const observable = this.bugService.save(this.bug);
+    observable.subscribe(response=>{
       console.log(response);
+      this.bug.id = response;
       alert('Bug is added....');
       this.bugArray.push(Object.assign({}, this.bug));
     },
@@ -32,6 +31,11 @@ export class CreatebugformComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const observable = this.bugService.getAllBugs();
+    observable.subscribe(response => {
+      console.log(response);
+      this.bugArray = response;
+    });
   }
 
 }

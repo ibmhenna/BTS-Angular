@@ -8,24 +8,41 @@ import { BugService } from '../bug.service';
   styleUrls: ['./searchbugform.component.css']
 })
 export class SearchbugformComponent implements OnInit {
-title:String = 'getBug';
+title:String = 'Searchbugform';
 bug:Bug = new Bug();
 bugArray: any;
 
   constructor(private bugService:BugService) { }
 
   searchBugbyName(name:any){
-    this.bugService.searchBugbyName(name).subscribe(response=>
-      {
+    console.log(this.bug.name);
+    const observable = this.bugService.searchBugbyName(this.bug.name);
+    observable.subscribe(response=>{
+      console.log(response);
         this.bugArray=[response];
-        console.log(response);
+        console.log("success");
       },
       error=>{
         console.log(error);
+        console.log("error");
+      })
+  }
+
+  searchBugbyStatus(status:any){
+    console.log(this.bug.status);
+    const observable = this.bugService.searchBugbyStatus(this.bug.status);
+    observable.subscribe(response=>{
+      console.log(response);
+        this.bugArray=[response];
+        console.log("success");
+      },
+      error=>{
+        console.log(error);
+        console.log("error");
       })
   }
 
   ngOnInit(): void {
-  }
 
-}
+  }
+  }

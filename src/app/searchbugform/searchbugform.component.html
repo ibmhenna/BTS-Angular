@@ -2,13 +2,16 @@
   <h1>BUG TRACKING SYSTEM</h1>
 
   <h3>SEARCH BUG</h3>
-
-  <label>Bug Name : </label>
-  <input [(ngModel)]="bug.name" />
-  <button onclick="searchBugbyName(bug.name)">Search bug by name</button><br />
-  <label>Bug Status : </label>
-  <input [(ngModel)]="bug.status" />
-  <button onclick="searchBugbyStatus(bug.status)">Search bug by status</button>
+  <div>
+    <label>Bug Name : </label>
+    <input [(ngModel)]="bug.name" />
+    <button (click)="searchBugbyName(bug.name)">Search bug by name</button><br />
+  </div>
+  <div>
+    <label>Bug Status : </label>
+    <input [(ngModel)]="bug.status" />
+    <button (click)="searchBugbyStatus(bug.status)">Search bug by status</button>
+  </div>
 </div>
 
 <table>

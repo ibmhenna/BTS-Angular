@@ -22,11 +22,20 @@ export class BugService {
   }
 
   searchBugbyName(name:any) {
-      return this.http.get(URL+'name/'+ name, {
+      return this.http.get(URL+'/name/'+ name, {
         headers: {
           "content-type": 'application/json',
           reponseType: 'text'
         }
         });
   }
+
+  searchBugbyStatus(status:any) {
+    return this.http.get(URL+'/status/'+ status, {
+      headers: {
+        "content-type": 'application/json',
+        reponseType: 'text'
+      }
+      });
+}
 }

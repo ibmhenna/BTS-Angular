@@ -27,7 +27,6 @@ export class CreatebugformComponent implements OnInit {
       console.log(error);
       alert("Error occured...")
     })
-
   }
 
   ngOnInit(): void {

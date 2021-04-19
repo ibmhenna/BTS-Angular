@@ -19,6 +19,14 @@ export class BugService {
 
   getAllBugs() {
     return this.http.get(URL);
+  }
 
+  searchBugbyName(name:any) {
+      return this.http.get(URL+'name/'+ name, {
+        headers: {
+          "content-type": 'application/json',
+          reponseType: 'text'
+        }
+        });
   }
 }

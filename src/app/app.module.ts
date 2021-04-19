@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CreatebugformComponent } from './createbugform/createbugform.component';
+import { SearchbugformComponent } from './searchbugform/searchbugform.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CreatebugformComponent
+    CreatebugformComponent,
+    SearchbugformComponent
   ],
   imports: [
     BrowserModule,FormsModule,HttpClientModule

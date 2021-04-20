@@ -15,11 +15,10 @@ input, label {
   float:left;
 }
 h1{
-  background-color: #666;
   padding: 30px;
   text-align: center;
   font-size: 35px;
-  color: white;
+  color: black;
 }
 h3{
   text-align: center;
@@ -57,4 +56,20 @@ tr:nth-child(odd){
 
 tr,tr td:hover{
   background-color:white;
+}
+
+body {
+	position: relative;
+}
+
+.title1 {
+	height: 150px;
+	position: relative;
+	padding-top: 100px;
+}
+
+.body1 {
+	width: 100%;
+	float: left;
+	position: relative;
 }

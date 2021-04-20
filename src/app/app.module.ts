@@ -7,14 +7,23 @@ import { HeaderComponent } from './header/header.component';
 import { CreatebugformComponent } from './createbugform/createbugform.component';
 import { SearchbugformComponent } from './searchbugform/searchbugform.component';
 
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes: Routes = [
+  { path: '', component: CreatebugformComponent }, //default, Home page
+  { path: 'Search bug', component: SearchbugformComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CreatebugformComponent,
-    SearchbugformComponent
+    SearchbugformComponent,
   ],
-  imports: [
+  imports: [RouterModule.forRoot(
+    appRoutes,
+    { enableTracing: true }
+  ),
     BrowserModule,FormsModule,HttpClientModule
   ],
   providers: [],

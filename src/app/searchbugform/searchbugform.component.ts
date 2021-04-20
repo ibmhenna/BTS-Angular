@@ -24,7 +24,7 @@ bugArray: any;
       },
       error=>{
         console.log(error);
-        console.log("error");
+        alert("error");
       })
   }
 
@@ -38,7 +38,7 @@ bugArray: any;
       },
       error=>{
         console.log(error);
-        console.log("error");
+        alert("error");
       })
   }
 

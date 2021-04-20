@@ -10,7 +10,7 @@ import { SearchbugformComponent } from './searchbugform/searchbugform.component'
 import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: CreatebugformComponent }, //default, Home page
-  { path: 'Search bug', component: SearchbugformComponent },
+  { path: 'searchbugform', component: SearchbugformComponent },
 ];
 
 @NgModule({

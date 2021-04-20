@@ -46,16 +46,16 @@ table{
 
 th,td{
   border: 1px soild black;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
 tr:nth-child(odd){
-  background-color: grey;
+  background-color: rgb(173, 168, 168);
 }
 
 tr,tr td:hover{
-  background-color:white;
+  background-color:rgb(221, 207, 207);
 }
 
 body {

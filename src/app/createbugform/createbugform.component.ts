@@ -20,8 +20,8 @@ export class CreatebugformComponent implements OnInit {
     observable.subscribe(response=>{
       console.log(response);
       this.bug.id = response;
-      alert('Bug is added....');
       this.bugArray.push(Object.assign({}, this.bug));
+      alert('Bug is added....');
     },
     error=> {
       console.log(error);
@@ -30,11 +30,6 @@ export class CreatebugformComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const observable = this.bugService.getAllBugs();
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugArray = response;
-    });
   }
 
 }

@@ -1,0 +1,61 @@
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <div
+    class="container-fluid bg-muted"
+    style="padding-top: 10px; padding-bottom: 10px"
+  >
+    <h2 class="sectionHead">Bugs</h2>
+  </div>
+
+  <div
+    id="createNewBug"
+    class="container tab-pane active"
+    style="padding-bottom: 30px"
+  >
+    <div class="table-responsive">
+      <table
+        class="table table-bordered table-stripped"
+        style="border: 2px solid #000000; margin-top: 50px"
+      >
+        <thead class="thead-dark">
+          <td>Bug Name</td>
+          <td>Project ID</td>
+          <td>Module</td>
+          <td>Build Version</td>
+          <td>Synopsis</td>
+          <td>Product</td>
+          <td>Description</td>
+          <td>Submitted Date</td>
+          <td>ETA</td>
+          <td>Status</td>
+          <td>Priority</td>
+          <td>Severity</td>
+          <td>Type</td>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let bug of bugArray; index as i">
+            <td>{{ bug.name }}</td>
+            <td>{{ bug.projectId }}</td>
+            <td>{{ bug.module }}</td>
+            <td>{{ bug.buildVersion }}</td>
+            <td>{{ bug.synopsis }}</td>
+            <td>{{ bug.product }}</td>
+            <td>{{ bug.description }}</td>
+            <td>{{ bug.submittedOn | date }}</td>
+            <td>{{ bug.eta | date }}</td>
+            <td>{{ bug.status }}</td>
+            <td>{{ bug.priority }}</td>
+            <td>{{ bug.severity }}</td>
+            <td>{{ bug.type }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer class="page-footer font-small blue" id="footer">
+        <div class="footer-copyright text-center py-3">
+          <small>© 2021 Copyright Code_with_HAT</small>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>

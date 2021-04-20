@@ -29,11 +29,10 @@ bugArray: any;
   }
 
   searchBugbyStatus(status:any){
-    console.log(this.bug.status);
-    const observable = this.bugService.searchBugbyStatus(this.bug.status);
+    const observable = this.bugService.searchBugbyStatus(status);
     observable.subscribe(response=>{
       console.log(response);
-        this.bugArray=[response];
+        this.bugArray=response;
         console.log("success");
       },
       error=>{

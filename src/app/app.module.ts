@@ -7,13 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { CreatebugformComponent } from './createbugform/createbugform.component';
 import { SearchbugformComponent } from './searchbugform/searchbugform.component';
 import { ViewallbugsComponent } from './viewallbugs/viewallbugs.component';
+import { HomeComponent } from './home/home.component';
 
 import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
-  { path: '', component: CreatebugformComponent }, //default, Home page
+  { path: 'createbugform', component: CreatebugformComponent }, //default, Home page
   { path: 'searchbugform', component: SearchbugformComponent },
   { path: 'viewallbugs', component: ViewallbugsComponent },
-
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     CreatebugformComponent,
     SearchbugformComponent,
     ViewallbugsComponent,
+    HomeComponent,
   ],
   imports: [RouterModule.forRoot(
     appRoutes,

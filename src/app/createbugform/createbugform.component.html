@@ -11,7 +11,7 @@
     class="container tab-pane active"
     style="padding-bottom: 30px"
   >
-    <form>
+  <form ngNativeValidate >
       <!-- -------first row in create bug---------- -->
       <div class="row">
         <div class="col">
@@ -21,6 +21,7 @@
               <br />
               <input
                 type="text"
+                size="40"
                 class="form-control mb-2 mr-sm-2"
                 id="name"
                 name="uname"
@@ -35,6 +36,7 @@
             <label for="uname" class="mb-2 mr-sm-2"><b>Project ID:</b></label>
             <input
               type="text"
+              size="40"
               class="form-control mb-2 mr-sm-2"
               id="projectId"
               [(ngModel)]="bug.projectId"
@@ -53,6 +55,7 @@
               <br />
               <input
                 type="text"
+                size="40"
                 class="form-control mb-2 mr-sm-2"
                 id="module"
                 [(ngModel)]="bug.module"
@@ -68,6 +71,7 @@
             >
             <input
               type="text"
+              size="40"
               class="form-control mb-2 mr-sm-2"
               id="buildVersion"
               [(ngModel)]="bug.buildVersion"
@@ -80,19 +84,23 @@
       <!-- -------third row in create bug---------- -->
       <div class="row">
         <div class="col">
-          <div class="form-group">
-            <div class="form-group form-inline">
-              <label for="uname" class="mb-2 mr-sm-2"><b>Synopsis : </b></label>
-              <br />
-              <input
-                type="text"
-                class="form-control mb-2 mr-sm-2"
-                id="synopsis"
-                name="uname"
-                [(ngModel)]="bug.synopsis"
-                required
-              />
-            </div>
+          <div class="form-group form-inline">
+            <label for="uname" class="mb-2 mr-sm-2"><b>Bug Type :</b></label>
+            <!-- dropdown options -->
+            <select
+            style="width: 345px;"
+              class="custom-select custom-select mb-3"
+              id="type"
+              [(ngModel)]="bug.type"
+              required
+            >
+              <option>SYNTAX</option>
+              <option>COMPILE_TIME</option>
+              <option>RUNTIME</option>
+              <option>LOGICAL</option>
+              <option>FUNCTIONAL</option>
+              <option>CALCULATION</option>
+            </select>
           </div>
         </div>
         <div class="col">
@@ -100,6 +108,7 @@
             <label for="uname" class="mb-2 mr-sm-2"><b>Product:</b></label>
             <input
               type="text"
+              size="40"
               class="form-control mb-2 mr-sm-2"
               id="product"
               [(ngModel)]="bug.product"
@@ -148,11 +157,13 @@
             <label for="uname" class="mb-2 mr-sm-2"><b>Status : </b></label>
             <!-- dropdown options -->
             <select
+            style="width: 345px;"
               class="custom-select custom-select mb-3"
               id="status"
               [(ngModel)]="bug.status"
               required
             >
+            <!-- <option value=""></option> -->
               <option>NEW</option>
             </select>
           </div>
@@ -162,6 +173,7 @@
             <label for="uname" class="mb-2 mr-sm-2"><b>Severity :</b></label>
             <!-- dropdown options -->
             <select
+            style="width: 345px;"
               class="custom-select custom-select mb-3"
               id="severity"
               [(ngModel)]="bug.severity"
@@ -181,6 +193,7 @@
             <label for="uname" class="mb-2 mr-sm-2"><b>Priority : </b></label>
             <!-- dropdown options -->
             <select
+            style="width: 345px;"
               class="custom-select custom-select mb-3"
               id="priority"
               [(ngModel)]="bug.priority"
@@ -193,46 +206,58 @@
           </div>
         </div>
         <div class="col">
-          <div class="form-group form-inline">
-            <label for="uname" class="mb-2 mr-sm-2"><b>Bug Type :</b></label>
-            <!-- dropdown options -->
-            <select
-              class="custom-select custom-select mb-3"
-              id="type"
-              [(ngModel)]="bug.type"
-              required
-            >
-              <option>SYNTAX</option>
-              <option>COMPILE_TIME</option>
-              <option>RUNTIME</option>
-              <option>LOGICAL</option>
-              <option>FUNCTIONAL</option>
-              <option>CALCULATION</option>
-            </select>
+          <div class="form-group">
+            <div class="form-group form-inline">
+              <label for="uname" class="mb-2 mr-sm-2"><b>Synopsis : </b></label>
+              <br />
+              <textarea
+                rows="1"
+                maxlength="50"
+                cols="25"
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="synopsis"
+                name="uname"
+                [(ngModel)]="bug.synopsis"
+                required
+              ></textarea>
+              <span class="pull-right char"
+                ><em>{{ 50 - bug.synopsis.length }} characters left</em></span
+              >
+            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col">
+        <!-- <div class="col"> -->
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"
               ><b>Description :</b>
             </label>
             <div class="form-group">
               <textarea
+                rows="3"
+                cols="25"
+                maxlength="200"
+                type="text"
                 class="form-control"
                 rows="5"
                 id="description"
                 name="text"
-                placeholder="describe in 5 to 100 characters"
+                placeholder="describe in 5 to 200 characters"
                 [(ngModel)]="bug.description"
                 required
               ></textarea>
+              <span class="pull-right char"
+                ><em
+                  >{{ 200 - bug.description.length }} characters left</em
+                ></span
+              >
             </div>
           </div>
-        </div>
-        <div class="col"></div>
+        <!-- </div> -->
+        <!-- <div class="col"></div> -->
       </div>
 
       <!-- ------------buttons------------ -->

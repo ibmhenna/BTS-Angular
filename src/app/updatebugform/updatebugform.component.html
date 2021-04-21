@@ -11,43 +11,45 @@
     class="container tab-pane active"
     style="padding-bottom: 30px"
   >
-    <form ngNativeValidate>
-      <!-- -------first row in create bug---------- -->
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <div class="form-group form-inline">
-              <label for="uname" class="mb-2 mr-sm-2"><b>Bug Name : </b></label>
-              <br />
-              <input
-                type="text"
-                size="40"
-                class="form-control mb-2 mr-sm-2"
-                id="name"
-                name="uname"
-                [(ngModel)]="bug.name"
-                required
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
+    <!-- <form ngNativeValidate> -->
+    <!-- -------first row in create bug---------- -->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
           <div class="form-group form-inline">
-            <label for="uname" class="mb-2 mr-sm-2"><b>Project ID:</b></label>
+            <label for="uname" class="mb-2 mr-sm-2"><b>Bug Name : </b></label>
+            <br />
             <input
               type="text"
-              size="40"
               class="form-control mb-2 mr-sm-2"
-              id="projectId"
-              [(ngModel)]="bug.projectId"
+              id="name"
+              [(ngModel)]="bug.name"
               required
             />
+            <button class="btn btn-info" (click)="searchBugbyName(bug.name)">
+              Search bug by name</button
+            ><br />
           </div>
         </div>
       </div>
+      <div class="col">
+        <div class="form-group form-inline">
+          <label for="uname" class="mb-2 mr-sm-2"><b>Project ID:</b></label>
+          <input
+            type="text"
+            size="40"
+            class="form-control mb-2 mr-sm-2"
+            id="projectId"
+            *ngFor="let bug of "
+            placeholder="{{ bug.projectId }}"
+            [(ngModel)]="bug.projectId"
+          />
+        </div>
+      </div>
+    </div>
 
-      <!-- -------second row in create bug---------- -->
-      <div class="row">
+    <!-- -------second row in create bug---------- -->
+    <!-- <div class="row">
         <div class="col">
           <div class="form-group">
             <div class="form-group form-inline">
@@ -79,14 +81,13 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- -------third row in create bug---------- -->
-      <div class="row">
+    <!-- -------third row in create bug---------- -->
+    <!-- <div class="row">
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>Bug Type :</b></label>
-            <!-- dropdown options -->
             <select
               style="width: 345px"
               class="custom-select custom-select mb-3"
@@ -116,10 +117,10 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- -------third row in create bug---------- -->
-      <div class="row">
+    <!-- -------third row in create bug---------- -->
+    <!-- <div class="row">
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>ETA:</b></label>
@@ -135,7 +136,6 @@
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>Priority : </b></label>
-            <!-- dropdown options -->
             <select
               style="width: 345px"
               class="custom-select custom-select mb-3"
@@ -149,13 +149,12 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row">
+    <!-- <div class="row">
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>Status : </b></label>
-            <!-- dropdown options -->
             <select
               style="width: 345px"
               class="custom-select custom-select mb-3"
@@ -170,7 +169,6 @@
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>Severity :</b></label>
-            <!-- dropdown options -->
             <select
               style="width: 345px"
               class="custom-select custom-select mb-3"
@@ -184,9 +182,9 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row">
+    <!-- <div class="row">
         <div class="col">
           <div class="form-group">
             <div class="form-group form-inline">
@@ -237,22 +235,22 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- ------------buttons------------ -->
-      <button
+    <!-- ------------buttons------------ -->
+    <!-- <button
         type="submit"
         class="btn btn-success form-control"
         (click)="update()"
       >
         Update
       </button>
-    </form>
+    </form> -->
 
-    <footer class="page-footer font-small blue" id="footer">
+    <!-- <footer class="page-footer font-small blue" id="footer">
       <div class="footer-copyright text-center py-3">
         <small>© 2021 Copyright Code_with_HAT</small>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </body>

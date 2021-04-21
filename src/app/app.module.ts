@@ -8,13 +8,15 @@ import { CreatebugformComponent } from './createbugform/createbugform.component'
 import { SearchbugformComponent } from './searchbugform/searchbugform.component';
 import { ViewallbugsComponent } from './viewallbugs/viewallbugs.component';
 import { HomeComponent } from './home/home.component';
+import { UpdatebugformComponent } from './updatebugform/updatebugform.component';
 
 import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
-  { path: 'createbugform', component: CreatebugformComponent }, //default, Home page
+  { path: '', component: HomeComponent },//default, Home page
+  { path: 'createbugform', component: CreatebugformComponent },
   { path: 'searchbugform', component: SearchbugformComponent },
+  { path: 'updatebugform', component: UpdatebugformComponent },
   { path: 'viewallbugs', component: ViewallbugsComponent },
-  { path: '', component: HomeComponent },
 ];
 
 @NgModule({
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
     SearchbugformComponent,
     ViewallbugsComponent,
     HomeComponent,
+    UpdatebugformComponent,
   ],
   imports: [RouterModule.forRoot(
     appRoutes,

@@ -21,8 +21,8 @@ export class CreatebugformComponent implements OnInit {
     observable.subscribe(response => {
       console.log(response);
       this.bug.id = response;
-      this.bugArray.push(Object.assign({}, this.bug));
       alert('Bug is added....');
+      this.bugArray.push(Object.assign({}, this.bug));
     },
       error => {
         console.log(error);

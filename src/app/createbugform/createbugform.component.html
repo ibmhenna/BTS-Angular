@@ -120,23 +120,7 @@
 
       <!-- -------third row in create bug---------- -->
       <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <div class="form-group form-inline">
-              <label for="uname" class="mb-2 mr-sm-2"
-                ><b>Submitted On : </b></label
-              >
-              <br />
-              <input
-                type="date"
-                [(ngModel)]="bug.submittedOn"
-                class="form-control mb-2 mr-sm-2"
-                id="submittedOn"
-                required
-              />
-            </div>
-          </div>
-        </div>
+
         <div class="col">
           <div class="form-group form-inline">
             <label for="uname" class="mb-2 mr-sm-2"><b>ETA:</b></label>
@@ -163,7 +147,7 @@
               [(ngModel)]="bug.status"
               required
             >
-            <!-- <option value=""></option> -->
+            <option value=""></option>
               <option>NEW</option>
             </select>
           </div>
@@ -179,6 +163,7 @@
               [(ngModel)]="bug.severity"
               required
             >
+            <option value="">Select</option>
               <option>CRITICAL</option>
               <option>MAJOR</option>
               <option>MINOR</option>
@@ -199,6 +184,7 @@
               [(ngModel)]="bug.priority"
               required
             >
+            <option value="">Select</option>
               <option>HIGH</option>
               <option>MEDIUM</option>
               <option>LOW</option>

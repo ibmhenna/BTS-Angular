@@ -8,42 +8,56 @@ import { BugService } from '../bug.service';
   styleUrls: ['./searchbugform.component.css']
 })
 export class SearchbugformComponent implements OnInit {
-title:String = 'Searchbugform';
-bug:Bug = new Bug();
-bugArray: any;
+  title: String = 'Searchbugform';
+  bug: Bug = new Bug();
+  bugArray: any;
 
-  constructor(private bugService:BugService) { }
+  constructor(private bugService: BugService) { }
 
-  deleteBug(id : any , index : number){
-    const observable = this.bugService.delete(id);
-    observable.subscribe(response=>this.bugArray.splice(index,1))
+  deleteBug(id: any, index: number) {
+    if (confirm("Are you sure about deleting the bug?")) {
+      const observable = this.bugService.delete(id);
+      observable.subscribe(response => this.bugArray.splice(index, 1))
+      alert("Bug is deleted....!")
+    }
+    else {
+      alert("Cancelled delete bug operation...")
+    }
   }
 
 
-  searchBugbyName(name:any){
+  searchBugbyName(name: any) {
     console.log(this.bug.name);
     const observable = this.bugService.searchBugbyName(this.bug.name);
-    observable.subscribe(response=>{
+    observable.subscribe(response => {
       console.log(response);
-        this.bugArray=[response];
-        console.log("success");
-      },
-      error=>{
-        console.log(error);
-        alert("error");
+      this.bugArray = [response];
+      if (this.bugArray[0]==undefined) {
+        alert("No bug found")
+
+      } else {
+        alert("Displaying bugs..")
+      }
+    },
+      error => {
+        alert("Error Occured. Not able to search..");
       })
   }
 
-  searchBugbyStatus(status:any){
+  searchBugbyStatus(status: any) {
     const observable = this.bugService.searchBugbyStatus(status);
-    observable.subscribe(response=>{
+    observable.subscribe(response => {
       console.log(response);
-        this.bugArray=response;
-        console.log("success");
-      },
-      error=>{
-        console.log(error);
-        alert("error");
+      this.bugArray = response;
+      if (this.bugArray[0]==undefined) {
+        alert("No bug found")
+
+      } else {
+        alert("Displaying bugs..")
+      }
+    },
+      error => {
+        alert("Error Occured. Not able to search..");
       })
   }
 

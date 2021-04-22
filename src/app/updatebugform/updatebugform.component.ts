@@ -14,33 +14,58 @@ export class UpdatebugformComponent implements OnInit {
 
   constructor(private bugService: BugService) { }
 
-  searchBugbyName(name:any){
-    console.log(this.bug.name);
-    const observable = this.bugService.searchBugbyName(this.bug.name);
-    observable.subscribe(response=>{
-      console.log(response);
-        this.bugArray=[response];
+  searchBugbyName(name: any) {
+    let URL = 'http://localhost:8081/bug/';
+    let bugname = (<HTMLInputElement>document.getElementById('name')).value;
+    if (bugname) {
+      URL = URL + 'name/' + bugname;
+      const observable = this.bugService.searchBugbyName(bugname);
+      observable.subscribe(response => {
+        this.bugArray = response;
         console.log("success");
-        console.log(this.bug.id);
+        if (this.bugArray) {
+          this.bug = this.bugArray;
+          // let prevEta = this.bug.eta;
+          // if (prevEta) {
+          //   let finalEta = prevEta.split('T')[0];
+          //   this.bug.eta = finalEta;
+          // }
+        }
+        else {
+          alert("Enter a valid bug name");
+        }
       },
-      error=>{
-        console.log(error);
-        alert("error");
-      })
+        error => {
+          console.log(error);
+          alert("error");
+        })
+    }
+    else {
+      alert("Please enter bug name")
+    }
   }
 
   update() {
-    const promise = this.bugService.updateBug(this.bug, this.bug.id);
-    promise.subscribe((response: any) => {
-      console.log(response);
-      alert('Bug is Updated')
 
-    },
-      error => {
-        console.log(error);
-        alert('Error Occured')
+    if (this.bug.name) {
+      this.bug.name = (<HTMLInputElement>document.getElementById('name')).value;
 
-      })
+      console.log(this.bug);
+      const promise = this.bugService.updateBug(this.bug, this.bug.id);
+      promise.subscribe((response: any) => {
+        console.log(response);
+        alert('Bug is Updated')
+
+      },
+        error => {
+          console.log(error);
+          alert('Error Occured')
+
+        })
+    }
+    else {
+      alert("Enter a valid bug name..")
+    }
   }
 
 

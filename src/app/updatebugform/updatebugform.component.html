@@ -12,7 +12,7 @@
     style="padding-bottom: 30px"
   >
     <!-- -------first row in create bug---------- -->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
         <div class="form-group">
           <div class="form-group form-inline">
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="col">
@@ -44,13 +44,15 @@
               size="40"
               class="form-control mb-2 mr-sm-2"
               id="name"
-              name="uname"
+              name="name"
+              (focusout)="searchBugbyName(bug.name)"
               [(ngModel)]="bug.name"
               required
             />
           </div>
         </div>
       </div>
+
       <div class="col">
         <div class="form-group form-inline">
           <label for="uname" class="mb-2 mr-sm-2"
@@ -61,6 +63,7 @@
             size="40"
             class="form-control mb-2 mr-sm-2"
             id="projectId"
+            name="projectId"
             [(ngModel)]="bug.projectId"
             required
           />
@@ -82,6 +85,7 @@
               size="40"
               class="form-control mb-2 mr-sm-2"
               id="module"
+              name="module"
               [(ngModel)]="bug.module"
               required
             />
@@ -98,6 +102,7 @@
             size="40"
             class="form-control mb-2 mr-sm-2"
             id="buildVersion"
+            name="buildVersion"
             [(ngModel)]="bug.buildVersion"
             required
           />
@@ -117,6 +122,7 @@
             style="width: 345px"
             class="custom-select custom-select mb-3"
             id="type"
+            name="type"
             [(ngModel)]="bug.type"
             required
           >
@@ -139,6 +145,7 @@
             size="40"
             class="form-control mb-2 mr-sm-2"
             id="product"
+            name="product"
             [(ngModel)]="bug.product"
             required
           />
@@ -158,6 +165,7 @@
             [(ngModel)]="bug.eta"
             class="form-control mb-2 mr-sm-2"
             id="eta"
+            name="eta"
             required
           />
         </div>
@@ -172,6 +180,7 @@
             style="width: 345px"
             class="custom-select custom-select mb-3"
             id="priority"
+            name="priority"
             [(ngModel)]="bug.priority"
             required
           >
@@ -194,10 +203,25 @@
             style="width: 345px"
             class="custom-select custom-select mb-3"
             id="status"
+            name="status"
             [(ngModel)]="bug.status"
             required
           >
             <option>NEW</option>
+            <option>ASSIGNED</option>
+            <option>OPEN</option>
+            <option>FIXED</option>
+            <option>PENDING_RETEST</option>
+            <option>RETEST</option>
+            <option>REOPEN</option>
+            <option>VERIFIED</option>
+            <option>CLOSED</option>
+            <option>DEFERRED</option>
+            <option>DUPLICATE</option>
+            <option>NOT_A_BUG</option>
+            <option>REJECTED</option>
+            <option>COULD_NOT_REPRODUCE</option>
+            <option>WONT_FIX</option>
           </select>
         </div>
       </div>
@@ -211,6 +235,7 @@
             style="width: 345px"
             class="custom-select custom-select mb-3"
             id="severity"
+            name="severity"
             [(ngModel)]="bug.severity"
             required
           >
@@ -237,7 +262,7 @@
               type="text"
               class="form-control mb-2 mr-sm-2"
               id="synopsis"
-              name="uname"
+              name="synopsis"
               [(ngModel)]="bug.synopsis"
               required
             ></textarea>

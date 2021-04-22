@@ -26,7 +26,7 @@ export class CreatebugformComponent implements OnInit {
     },
       error => {
         console.log(error);
-        alert("Error occured...")
+        alert("Please fill all the fields")
       })
 
   }

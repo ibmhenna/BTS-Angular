@@ -15,17 +15,17 @@
       <div class="col">
         <div class="form-group form-inline">
           <br />
-            <input
-              type="text"
-              [(ngModel)]="bug.name"
-              class="form-control mb-2 mr-sm-2"
-              id="name"
-              placeholder="Enter Bug Name"
-              required
-            />
-            <button class="btn btn-info" (click)="searchBugbyName(bug.name)">
-              Search bug by name</button
-            ><br />
+          <input
+            type="text"
+            [(ngModel)]="bug.name"
+            class="form-control mb-2 mr-sm-2"
+            id="name"
+            placeholder="Enter Bug Name"
+            required
+          />
+          <button class="btn btn-info" (click)="searchBugbyName(bug.name)">
+            Search bug by name</button
+          ><br />
         </div>
       </div>
 
@@ -33,39 +33,38 @@
         <div class="form-group form-inline">
           <br />
 
-            <select
-              style="width: 250px"
-              class="custom-select custom-select mb-3"
-              id="status"
-              [(ngModel)]="bug.status"
-              required
-            >
-            <option value="">Select Bug</option>
-
-              <option>NEW</option>
-              <option>ASSIGNED</option>
-              <option>OPEN</option>
-              <option>FIXED</option>
-              <option>PENDING_RETEST</option>
-              <option>RETEST</option>
-              <option>REOPEN</option>
-              <option>VERIFIED</option>
-              <option>CLOSED</option>
-              <option>DEFERRED</option>
-              <option>DUPLICATE</option>
-              <option>NOT_A_BUG</option>
-              <option>REJECTED</option>
-              <option>COULD_NOT_REPRODUCE</option>
-              <option>WONT_FIX</option>
-            </select>
-            <button
-              class="btn btn-info"
-              (click)="searchBugbyStatus(bug.status)"
-            >
-              Search bug by status</button
-            ><br />
+          <select
+            style="width: 250px"
+            class="custom-select custom-select mb-3"
+            id="status"
+            [(ngModel)]="bug.status"
+            required
+          >
+            <option>NEW</option>
+            <option>ASSIGNED</option>
+            <option>OPEN</option>
+            <option>FIXED</option>
+            <option>PENDING_RETEST</option>
+            <option>RETEST</option>
+            <option>REOPEN</option>
+            <option>VERIFIED</option>
+            <option>CLOSED</option>
+            <option>DEFERRED</option>
+            <option>DUPLICATE</option>
+            <option>NOT_A_BUG</option>
+            <option>REJECTED</option>
+            <option>COULD_NOT_REPRODUCE</option>
+            <option>WONT_FIX</option>
+          </select>
+          <button class="btn btn-info" (click)="searchBugbyStatus(bug.status)">
+            Search bug by status</button
+          ><br />
         </div>
       </div>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-info" (click)="ngOnInit()">Get All Bugs</button>
     </div>
 
     <div class="table-responsive">
@@ -105,7 +104,7 @@
             <td>{{ bug.priority }}</td>
             <td>{{ bug.severity }}</td>
             <td>{{ bug.type }}</td>
-            <td><button (click)='this.deleteBug(bug.id,i)'>Delete</button></td>
+            <td><button (click)="this.deleteBug(bug.id, i)">Delete</button></td>
           </tr>
         </tbody>
       </table>

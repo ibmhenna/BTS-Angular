@@ -28,7 +28,6 @@ export class CreatebugformComponent implements OnInit {
         console.log(error);
         alert("Please fill all the fields")
       })
-
   }
 
   ngOnInit(): void {

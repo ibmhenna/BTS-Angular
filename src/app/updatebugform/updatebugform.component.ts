@@ -14,6 +14,7 @@ export class UpdatebugformComponent implements OnInit {
 
   constructor(private bugService: BugService) { }
 
+  //get bug details to be prepopuleted
   searchBugbyName(name: any) {
     let URL = 'http://localhost:8081/bug/';
     let bugname = (<HTMLInputElement>document.getElementById('name')).value;
@@ -25,11 +26,6 @@ export class UpdatebugformComponent implements OnInit {
         console.log("success");
         if (this.bugArray) {
           this.bug = this.bugArray;
-          // let prevEta = this.bug.eta;
-          // if (prevEta) {
-          //   let finalEta = prevEta.split('T')[0];
-          //   this.bug.eta = finalEta;
-          // }
         }
         else {
           alert("Enter a valid bug name");
@@ -45,8 +41,8 @@ export class UpdatebugformComponent implements OnInit {
     }
   }
 
+  //updating bug details
   update() {
-
     if (this.bug.name) {
       this.bug.name = (<HTMLInputElement>document.getElementById('name')).value;
 
@@ -55,19 +51,16 @@ export class UpdatebugformComponent implements OnInit {
       promise.subscribe((response: any) => {
         console.log(response);
         alert('Bug is Updated')
-
       },
         error => {
           console.log(error);
           alert('Error Occured')
-
         })
     }
     else {
       alert("Enter a valid bug name..")
     }
   }
-
 
   ngOnInit(): void {
   }

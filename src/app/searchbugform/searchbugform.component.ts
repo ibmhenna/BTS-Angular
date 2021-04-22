@@ -14,6 +14,7 @@ export class SearchbugformComponent implements OnInit {
 
   constructor(private bugService: BugService) { }
 
+// delete bug
   deleteBug(id: any, index: number) {
     if (confirm("Are you sure about deleting the bug?")) {
       const observable = this.bugService.delete(id);
@@ -25,9 +26,8 @@ export class SearchbugformComponent implements OnInit {
     }
   }
 
-
+  //search bug by name
   searchBugbyName(name: any) {
-    console.log(this.bug.name);
     const observable = this.bugService.searchBugbyName(this.bug.name);
     observable.subscribe(response => {
       console.log(response);
@@ -44,6 +44,7 @@ export class SearchbugformComponent implements OnInit {
       })
   }
 
+  //search bug by status
   searchBugbyStatus(status: any) {
     const observable = this.bugService.searchBugbyStatus(status);
     observable.subscribe(response => {
@@ -61,6 +62,7 @@ export class SearchbugformComponent implements OnInit {
       })
   }
 
+  //get all bugs
   ngOnInit(): void {
     const observable = this.bugService.getAllBugs();
     observable.subscribe(response => {

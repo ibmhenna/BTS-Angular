@@ -11,26 +11,7 @@
     class="container tab-pane active"
     style="padding-bottom: 30px"
   >
-    <!-- -------first row in create bug---------- -->
-    <!-- <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <div class="form-group form-inline">
-            <label for="uname" class="mb-2 mr-sm-2"><b>Bug ID: <span style="color: red">*</span></b></label>
-            <br />
-            <input
-              type="text"
-              class="form-control mb-2 mr-sm-2"
-              id="bugId"
-              size="40"
-              [(ngModel)]="bug.id"
-              required
-            />
-          </div>
-        </div>
-      </div>
-    </div> -->
-
+    <!-- first row: bug name and project id -->
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -71,7 +52,7 @@
       </div>
     </div>
 
-    <!-- -------second row in create bug---------- -->
+    <!-- -------second row: module and build version---------- -->
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -110,7 +91,7 @@
       </div>
     </div>
 
-    <!-- -------third row in create bug---------- -->
+    <!-- -------third row: bug type and product---------- -->
     <div class="row">
       <div class="col">
         <div class="form-group form-inline">
@@ -153,7 +134,7 @@
       </div>
     </div>
 
-    <!-- -------third row in create bug---------- -->
+    <!-- -------fourth row eta and priority---------- -->
     <div class="row">
       <div class="col">
         <div class="form-group form-inline">
@@ -192,6 +173,7 @@
       </div>
     </div>
 
+    <!-- fifth row: bug status and severity -->
     <div class="row">
       <div class="col">
         <div class="form-group form-inline">
@@ -247,6 +229,7 @@
       </div>
     </div>
 
+    <!-- sixth row: synopsis and description -->
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -300,7 +283,7 @@
       </div>
     </div>
 
-    <!-- ------------buttons------------ -->
+    <!-- ------------button------------ -->
     <button
       type="submit"
       class="btn btn-success form-control"
@@ -308,8 +291,8 @@
     >
       Update
     </button>
-    <!-- </form> -->
 
+    <!-- footer -->
     <footer class="page-footer font-small blue" id="footer">
       <div class="footer-copyright text-center py-3">
         <small>© 2021 Copyright Code_with_HAT</small>

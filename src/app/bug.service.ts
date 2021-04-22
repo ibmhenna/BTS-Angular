@@ -9,6 +9,8 @@ const URL = 'http://localhost:8081/bug';
 export class BugService {
 
   constructor(private http: HttpClient) { }
+
+  //save bug
   save(bug: Bug) {
     return this.http.post(URL, bug, {
       headers: {
@@ -18,10 +20,12 @@ export class BugService {
     });
   }
 
+  //get all bugs
   getAllBugs() {
     return this.http.get(URL);
   }
 
+  //get bug by name
   searchBugbyName(name: any) {
     return this.http.get(URL + '/name/' + name, {
       headers: {
@@ -31,6 +35,7 @@ export class BugService {
     });
   }
 
+  //search bug by status
   searchBugbyStatus(status: any) {
     return this.http.get(URL + '/status/' + status, {
       headers: {
@@ -40,13 +45,15 @@ export class BugService {
     });
   }
 
-  updateBug(bug : Bug, id :string){
-    return this.http.put(URL + '/' + id, bug,{
-      headers:{"content-type": 'application/json'}
+  //update bug
+  updateBug(bug: Bug, id: string) {
+    return this.http.put(URL + '/' + id, bug, {
+      headers: { "content-type": 'application/json' }
     })
   }
 
-  delete(id:any){
+  //delete bug
+  delete(id: any) {
     return this.http.delete(URL + '/' + id);
   }
 }

@@ -8,10 +8,10 @@ import { BugService } from '../bug.service';
   styleUrls: ['./viewallbugs.component.css']
 })
 export class ViewallbugsComponent implements OnInit {
-  title:String = 'viewallbugsform';
-  bugArray:any;
-  bug:Bug=new Bug();
-  constructor(private bugService:BugService) { }
+  title: String = 'viewallbugsform';
+  bugArray: any;
+  bug: Bug = new Bug();
+  constructor(private bugService: BugService) { }
 
   ngOnInit(): void {
     const observable = this.bugService.getAllBugs();

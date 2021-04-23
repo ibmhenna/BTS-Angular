@@ -45,6 +45,15 @@ export class BugService {
     });
   }
 
+  getBugbyStatusAndName(name: string, status: string) {
+    return this.http.get(URL+'/search/'+ name+'/'+status, {
+      headers: {
+        "content-type": 'application/json',
+        reponseType: 'text'
+      }
+      });
+  }
+
   //update bug
   updateBug(bug: Bug, id: string) {
     return this.http.put(URL + '/' + id, bug, {

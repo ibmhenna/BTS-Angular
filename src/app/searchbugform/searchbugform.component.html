@@ -58,6 +58,7 @@
             <option>COULD_NOT_REPRODUCE</option>
             <option>WONT_FIX</option>
           </select>
+          &nbsp;&nbsp;
           <button class="btn btn-info" (click)="searchBugbyStatus(bug.status)">
             Search bug by status</button
           ><br />
@@ -68,8 +69,11 @@
     <!-- button for get all bugs -->
 
     <div class="text-center">
-      <button class="btn btn-info" (click)="ngOnInit()">Get All Bugs</button>
+      <button class="btn btn-info" style="width: 40%;" (click)='searchBugbyNameandStatus()'>Search by Name and Status</button>
+     &nbsp;&nbsp;
+      <button class="btn btn-info" style="width: 40%;" (click)="ngOnInit()">Get All Bugs</button>
     </div>
+
 
     <!-- table -->
 
@@ -81,13 +85,11 @@
         <thead class="thead-dark">
           <td>Bug Name</td>
           <td>Project ID</td>
-          <td>Module</td>
-          <td>Build Version</td>
           <td>Synopsis</td>
           <td>Product</td>
           <td>Description</td>
           <td>Submitted Date</td>
-          <td>ETA</td>
+          <td>Estimated Time</td>
           <td>Status</td>
           <td>Priority</td>
           <td>Severity</td>
@@ -99,8 +101,6 @@
           <tr *ngFor="let bug of bugArray; index as i">
             <td>{{ bug.name }}</td>
             <td>{{ bug.projectId }}</td>
-            <td>{{ bug.module }}</td>
-            <td>{{ bug.buildVersion }}</td>
             <td>{{ bug.synopsis }}</td>
             <td>{{ bug.product }}</td>
             <td>{{ bug.description }}</td>
@@ -110,7 +110,7 @@
             <td>{{ bug.priority }}</td>
             <td>{{ bug.severity }}</td>
             <td>{{ bug.type }}</td>
-            <td><button (click)="this.deleteBug(bug.id, i)">Delete</button></td>
+            <td><button class="btn btn-danger" (click)="this.deleteBug(bug.id, i)">Delete</button></td>
           </tr>
         </tbody>
       </table>

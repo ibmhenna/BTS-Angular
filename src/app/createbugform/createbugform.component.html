@@ -2,9 +2,7 @@
   <div
     class="container-fluid bg-muted"
     style="padding-top: 10px; padding-bottom: 10px"
-  >
-    <h2 class="sectionHead">Create Bug</h2>
-  </div>
+  ></div>
 
   <div
     id="createNewBug"
@@ -24,12 +22,16 @@
             <input
               type="text"
               size="40"
+              maxlength="50"
               class="form-control mb-2 mr-sm-2"
               id="name"
               name="uname"
               [(ngModel)]="bug.name"
               required
             />
+            <span class="pull-right char"
+              ><em>{{ 50 - bug.name.length }} characters left</em></span
+            >
           </div>
         </div>
       </div>
@@ -220,7 +222,7 @@
             >
             <br />
             <textarea
-              rows="1"
+              rows="2"
               maxlength="50"
               cols="25"
               type="text"

@@ -3,7 +3,6 @@
     class="container-fluid bg-muted"
     style="padding-top: 10px; padding-bottom: 10px"
   >
-    <h2 class="sectionHead">Update Bug</h2>
   </div>
 
   <div
@@ -29,6 +28,29 @@
               (focusout)="searchBugbyName(bug.name)"
               [(ngModel)]="bug.name"
               required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <div class="form-group form-inline">
+            <label for="uname" class="mb-2 mr-sm-2"><b>Bug ID : </b></label>
+            <br />
+            <input
+              type="text"
+              size="40"
+              class="form-control mb-2 mr-sm-2"
+              id="id"
+              name="id"
+              [(ngModel)]="bug.id"
+              required
+              disabled
             />
           </div>
         </div>

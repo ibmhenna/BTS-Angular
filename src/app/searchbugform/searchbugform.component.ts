@@ -27,63 +27,74 @@ export class SearchbugformComponent implements OnInit {
     }
   }
 
-  //search bug by name
-  searchBugbyName(name: any) {
-    const observable = this.bugService.searchBugbyName(this.bug.name);
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugArray = response;
-      if (this.bugArray[0] == undefined) {
-        alert("No bug found")
-
-      } else {
-        alert("Displaying bugs..")
-      }
-    },
-      error => {
-        alert("Error Occured. Not able to search..");
-      })
-  }
-
-  //search bug by status
-  searchBugbyStatus(status: any) {
-    const observable = this.bugService.searchBugbyStatus(status);
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugArray = response;
-      if (this.bugArray[0] == undefined) {
-        alert("No bug found")
-
-      } else {
-        alert("Displaying bugs..")
-      }
-    },
-      error => {
-        alert("Error Occured. Not able to search..");
-      })
-  }
+  //SEARCH BUG BY NAME AND STATUS
 
   searchBugbyNameandStatus() {
     let status = (<HTMLInputElement>document.getElementById('status')).value;
     let name = (<HTMLInputElement>document.getElementById('name')).value;
-    const observable = this.bugService.getBugbyStatusAndName(name, status);
-    observable.subscribe(response => {
-      console.log(response);
-      this.bugList = response;
-      if (this.bugList != 0) {
-        this.bugArray = this.bugList;
-      }
-      else {
-        alert("No Bug with Name : " + name + " and Status : " + status + " found");
-        this.bugArray = [];
-      }
-    },
-      error => {
-        alert('error happened..')
-      })
+
+    //IF BOTH FIELDS ARE AVAILABLE
+    if (this.bug.name != undefined && this.bug.status != undefined) {
+      const observable = this.bugService.getBugbyStatusAndName(name, status);
+      observable.subscribe(response => {
+        console.log(response);
+        this.bugList = response;
+        if (this.bugList != 0) {
+          this.bugArray = this.bugList;
+        }
+        else {
+          alert("No Bug with Name : " + name + " and Status : " + status + " found");
+          this.bugArray = [];
+        }
+      },
+        error => {
+          alert('error happened..')
+        })
+    }
+
+    //IF ONLY BUG NAME IS AVAILABLE
+    if (this.bug.name != undefined && this.bug.status == undefined) {
+      const observable = this.bugService.searchBugbyName(this.bug.name);
+      observable.subscribe(response => {
+        console.log(response);
+        this.bugArray = response;
+        if (this.bugArray[0] == undefined) {
+          alert("No bug found")
+
+        } else {
+          alert("Displaying bugs with similar name " + name)
+        }
+      },
+        error => {
+          alert("Error Occured. Not able to search..");
+        })
+    }
+
+    //IF ONLY STATUS IS AVAILABLE
+    if (this.bug.name == undefined && this.bug.status != undefined) {
+      const observable = this.bugService.searchBugbyStatus(status);
+      observable.subscribe(response => {
+        console.log(response);
+        this.bugArray = response;
+        if (this.bugArray[0] == undefined) {
+          alert("No bug found")
+
+        } else {
+          alert("Displaying bugs with status " + status)
+        }
+      },
+        error => {
+          alert("Error Occured. Not able to search..");
+        })
+    }
+
+    //IF BOTH FIELDS ARE NOT AVAILABLE
+    if (this.bug.name == undefined && this.bug.status == undefined) {
+      alert("Please enter BUG NAME or STATUS")
+    }
   }
 
-  refreshPage(){
+  refreshPage() {
     window.location.reload();
   }
 

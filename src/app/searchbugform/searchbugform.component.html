@@ -2,38 +2,33 @@
   <div
     class="container-fluid bg-muted"
     style="padding-top: 10px; padding-bottom: 10px"
-  >
-  </div>
+  ></div>
 
   <div
     id="searchBug"
     class="container tab-pane active"
     style="padding-bottom: 30px"
   >
-
-  <!-- input fields -->
+    <!-- input fields -->
     <div class="row">
       <div class="col">
         <div class="form-group form-inline">
+          <label for="uname" class="mb-2 mr-sm-2"><b>Bug Name : </b></label>
           <br />
           <input
             type="text"
             [(ngModel)]="bug.name"
             class="form-control mb-2 mr-sm-2"
             id="name"
-            placeholder="Enter Bug Name"
             required
           />
-          <button class="btn btn-info" (click)="searchBugbyName(bug.name)">
-            Search bug by name</button
-          ><br />
         </div>
       </div>
 
       <div class="col">
         <div class="form-group form-inline">
+          <label for="uname" class="mb-2 mr-sm-2"><b>Bug status : </b></label>
           <br />
-
           <select
             style="width: 250px"
             class="custom-select custom-select mb-3"
@@ -57,10 +52,6 @@
             <option>COULD_NOT_REPRODUCE</option>
             <option>WONT_FIX</option>
           </select>
-          &nbsp;&nbsp;
-          <button class="btn btn-info" (click)="searchBugbyStatus(bug.status)">
-            Search bug by status</button
-          ><br />
         </div>
       </div>
     </div>
@@ -68,13 +59,19 @@
     <!-- button for get all bugs -->
 
     <div class="text-center">
-      <button class="btn btn-info" style="width: 30%;" (click)='searchBugbyNameandStatus()'>Search by Name and Status</button>
+      <button
+        class="btn btn-info"
+        style="width: 30%"
+        (click)="searchBugbyNameandStatus()"
+      >
+        Search by Name and Status
+      </button>
 
       &nbsp;&nbsp;
-      <button class="btn btn-info" style="width: 30%;" (click)="refreshPage()">Refresh</button>
-
+      <button class="btn btn-info" style="width: 30%" (click)="refreshPage()">
+        Refresh
+      </button>
     </div>
-
 
     <!-- table -->
 
@@ -111,7 +108,14 @@
             <td>{{ bug.priority }}</td>
             <td>{{ bug.severity }}</td>
             <td>{{ bug.type }}</td>
-            <td><button class="btn btn-danger" (click)="this.deleteBug(bug.id, i)">Delete</button></td>
+            <td>
+              <button
+                class="btn btn-danger"
+                (click)="this.deleteBug(bug.id, i)"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

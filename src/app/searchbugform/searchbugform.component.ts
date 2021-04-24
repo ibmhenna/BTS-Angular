@@ -32,7 +32,7 @@ export class SearchbugformComponent implements OnInit {
     const observable = this.bugService.searchBugbyName(this.bug.name);
     observable.subscribe(response => {
       console.log(response);
-      this.bugArray = [response];
+      this.bugArray = response;
       if (this.bugArray[0] == undefined) {
         alert("No bug found")
 
@@ -81,6 +81,10 @@ export class SearchbugformComponent implements OnInit {
       error => {
         alert('error happened..')
       })
+  }
+
+  refreshPage(){
+    window.location.reload();
   }
 
   //get all bugs

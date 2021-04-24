@@ -20,7 +20,7 @@ export class UpdatebugformComponent implements OnInit {
     let bugname = (<HTMLInputElement>document.getElementById('name')).value;
     if (bugname) {
       URL = URL + 'name/' + bugname;
-      const observable = this.bugService.searchBugbyName(bugname);
+      const observable = this.bugService.searchBugbyName1(bugname);
       observable.subscribe(response => {
         this.bugArray = response;
         console.log("success");
@@ -61,6 +61,8 @@ export class UpdatebugformComponent implements OnInit {
       alert("Enter a valid bug name..")
     }
   }
+
+
 
   ngOnInit(): void {
   }

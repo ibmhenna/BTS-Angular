@@ -2,8 +2,7 @@
   <div
     class="container-fluid bg-muted"
     style="padding-top: 10px; padding-bottom: 10px"
-  >
-  </div>
+  ></div>
 
   <div
     id="createNewBug"
@@ -25,16 +24,17 @@
               class="form-control mb-2 mr-sm-2"
               id="name"
               name="name"
-              (focusout)="searchBugbyName(bug.name)"
+
               [(ngModel)]="bug.name"
               required
             />
           </div>
         </div>
       </div>
+      <div class="col">
+        <button class="btn btn-info" (click)="searchBugbyName(bug.name)">Get details</button>
+      </div>
     </div>
-
-
 
     <div class="row">
       <div class="col">
@@ -290,7 +290,6 @@
               maxlength="200"
               type="text"
               class="form-control"
-              rows="5"
               id="description"
               name="text"
               placeholder="describe in 5 to 200 characters"

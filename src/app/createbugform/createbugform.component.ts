@@ -16,6 +16,7 @@ export class CreatebugformComponent implements OnInit {
 
   save() {
     console.log(this.bug.name);
+    this.bug.status="NEW";
     const observable = this.bugService.save(this.bug);
 
     observable.subscribe(response => {

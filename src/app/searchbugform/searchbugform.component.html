@@ -99,9 +99,25 @@
           <tr *ngFor="let bug of bugArray; index as i">
             <td>{{ bug.name }}</td>
             <td>{{ bug.projectId }}</td>
-            <td>{{ bug.synopsis }}</td>
+            <td>
+              {{ bug.synopsis | ellipsis: 12
+              }}<button
+                class="btn btn-link"
+                (click)="showDescription(this.bug.synopsis)"
+              >
+                ReadMore
+              </button>
+            </td>
             <td>{{ bug.product }}</td>
-            <td>{{ bug.description }}</td>
+            <td>
+              {{ bug.description | ellipsis: 12
+              }}<button
+                class="btn btn-link"
+                (click)="showDescription(this.bug.description)"
+              >
+                ReadMore
+              </button>
+            </td>
             <td>{{ bug.submittedOn | date }}</td>
             <td>{{ bug.eta | date }}</td>
             <td>{{ bug.status }}</td>

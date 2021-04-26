@@ -98,6 +98,16 @@ export class SearchbugformComponent implements OnInit {
     window.location.reload();
   }
 
+  showSynopsis(synopsis: string) {
+    alert(synopsis);
+  }
+
+  showDescription(description: string) {
+    // Swal.fire(description);
+     alert(description);
+  }
+
+
   //get all bugs
   ngOnInit(): void {
     const observable = this.bugService.getAllBugs();

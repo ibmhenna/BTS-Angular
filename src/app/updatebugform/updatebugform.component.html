@@ -20,7 +20,7 @@
             <br />
             <input
               type="text"
-              size="40"
+              size="35"
               class="form-control mb-2 mr-sm-2"
               id="name"
               name="name"
@@ -44,7 +44,7 @@
             <br />
             <input
               type="text"
-              size="40"
+              size="35"
               class="form-control mb-2 mr-sm-2"
               id="id"
               name="id"
@@ -63,7 +63,7 @@
           >
           <input
             type="text"
-            size="40"
+            size="35"
             class="form-control mb-2 mr-sm-2"
             id="projectId"
             name="projectId"
@@ -85,7 +85,7 @@
             <br />
             <input
               type="text"
-              size="40"
+              size="35"
               class="form-control mb-2 mr-sm-2"
               id="module"
               name="module"
@@ -102,7 +102,7 @@
           >
           <input
             type="text"
-            size="40"
+            size="35"
             class="form-control mb-2 mr-sm-2"
             id="buildVersion"
             name="buildVersion"
@@ -122,7 +122,7 @@
           >
           <!-- dropdown options -->
           <select
-            style="width: 345px"
+            style="width: 335px"
             class="custom-select custom-select mb-3"
             id="type"
             name="type"
@@ -145,7 +145,7 @@
           >
           <input
             type="text"
-            size="40"
+            size="35"
             class="form-control mb-2 mr-sm-2"
             id="product"
             name="product"
@@ -180,7 +180,7 @@
           >
           <!-- dropdown options -->
           <select
-            style="width: 345px"
+            style="width: 335px"
             class="custom-select custom-select mb-3"
             id="priority"
             name="priority"
@@ -204,7 +204,7 @@
           >
           <!-- dropdown options -->
           <select
-            style="width: 345px"
+            style="width: 335px"
             class="custom-select custom-select mb-3"
             id="status"
             name="status"
@@ -236,7 +236,7 @@
           >
           <!-- dropdown options -->
           <select
-            style="width: 345px"
+            style="width: 335px"
             class="custom-select custom-select mb-3"
             id="severity"
             name="severity"
@@ -261,7 +261,7 @@
             >
             <br />
             <textarea
-              rows="1"
+              rows="2"
               maxlength="50"
               cols="25"
               type="text"
@@ -272,7 +272,7 @@
               required
             ></textarea>
             <span class="pull-right char"
-              ><em>{{ 50 - bug.synopsis?.length }} characters left</em></span
+              ><em>{{ 50 - bug.synopsis?.length }} chars left</em></span
             >
           </div>
         </div>
@@ -285,7 +285,7 @@
           </label>
           <div class="form-group">
             <textarea
-              rows="3"
+              rows="2"
               cols="25"
               maxlength="200"
               type="text"
@@ -297,7 +297,7 @@
               required
             ></textarea>
             <span class="pull-right char"
-              ><em>{{ 200 - bug.description?.length }} characters left</em></span
+              ><em>{{ 200 - bug.description?.length }} chars left</em></span
             >
           </div>
         </div>

@@ -12,7 +12,7 @@ export class UpdatebugformComponent implements OnInit {
   bug: Bug = new Bug();
   currentStatus: any;
   bugArray: any;
-  today: Date = new Date();
+  today: Date | Date = new Date();
 
   constructor(private bugService: BugService) { }
 
@@ -61,8 +61,7 @@ export class UpdatebugformComponent implements OnInit {
       },
         error => {
 
-
-          if (this.bug.eta<=this.today) {
+          if (this.bug.eta <= this.today) {
             alert('ETA should be future date');
           }
 
@@ -90,20 +89,44 @@ export class UpdatebugformComponent implements OnInit {
             alert('Status can be changed only to REOPEN or VERIFIED');
             return;
           }
-          else if (this.currentStatus == 'REOPEN' && (this.bug.status != 'OPEN' || this.bug.status != 'DEFERRED' || this.bug.status != 'DUPLICATE' || this.bug.status != 'REJECTED' || this.bug.status != 'NOT_A_BUG' || this.bug.status != 'COULD_NOT_REPRODUCE' || this.bug.status != 'NEED_MORE_INFO' || this.bug.status != 'WONT_FIX' || this.bug.status != 'FIXED')) {
-            alert('Status can be changed only to DEFERRED, DUPLICATE, REJECTED, NOT_A_BUG, COULD_NOT_REPRODUCE, NEED_MORE_INFO, WONT_FIX, FIXED');
+          else if (this.currentStatus == 'REOPEN' && (this.bug.status != 'REOPEN' || this.bug.status != 'DEFERRED' || this.bug.status != 'DUPLICATE' || this.bug.status != 'REJECTED' || this.bug.status != 'NOT_A_BUG' || this.bug.status != 'COULD_NOT_REPRODUCE' || this.bug.status != 'NEED_MORE_INFO' || this.bug.status != 'WONT_FIX' || this.bug.status != 'FIXED')) {
+            alert('Status can be changed only to DEFERRED, DUPLICATE, REJECTED, NOT_A_BUG, COULD_NOT_REPRODUCE, NEED_MORE_INFO, WONT_FIX or FIXED');
             return;
           }
-          else if ((this.currentStatus == 'VERIFIED' || this.currentStatus == 'WONT_FIX' || this.currentStatus == 'DUPLICATE' || this.currentStatus == 'REJECTED' || this.currentStatus == 'NOT_A_BUG') && (this.bug.status != 'CLOSED')) {
-            alert('Status can be changed only to WONT_FIX, DUPLICATE, REJECTED, NOT_A_BUG, CLOSED');
+          else if (this.currentStatus == 'VERIFIED' && (this.bug.status != 'VERIFIED' || this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to VERIFIED or CLOSED');
             return;
           }
-          else if ((this.currentStatus == 'COULD_NOT_REPRODUCE' || this.currentStatus == 'NEED_MORE_INFO') && (this.bug.status != 'DEFERRED')) {
+          else if (this.currentStatus == 'WONT_FIX' && (this.bug.status != 'WONT_FIX' || this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to WONT_FIX or CLOSED');
+            return;
+          }
+          else if (this.currentStatus == 'DUPLICATE' && (this.bug.status != 'DUPLICATE' || this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to DUPLICATE  or CLOSED');
+            return;
+          }
+          else if (this.currentStatus == 'REJECTED' && (this.bug.status != 'REJECTED' || this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to REJECTED or CLOSED');
+            return;
+          }
+          else if (this.currentStatus == 'NOT_A_BUG' && (this.bug.status != 'NOT_A_BUG' || this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to NOT_A_BUG orCLOSED');
+            return;
+          }
+          else if (this.currentStatus == 'COULD_NOT_REPRODUCE' && (this.bug.status != 'COULD_NOT_REPRODUCE' || this.bug.status != 'DEFERRED')) {
             alert('Status can be changed only to DEFERRED');
             return;
           }
-          else if ((this.currentStatus == 'DEFERRED') && (this.bug.status != 'ASSIGNED')) {
-            alert('Status can be changed only to ASSIGNED');
+          else if (this.currentStatus == 'NEED_MORE_INFO' && (this.bug.status != 'NEED_MORE_INFO' || this.bug.status != 'DEFERRED')) {
+            alert('Status can be changed only to NEED_MORE_INFO or DEFERRED');
+            return;
+          }
+          else if (this.currentStatus == 'DEFERRED' && (this.bug.status != 'DEFERRED' || this.bug.status != 'ASSIGNED')) {
+            alert('Status can be changed only to DEFERRED or ASSIGNED');
+            return;
+          }
+          else if (this.currentStatus == 'CLOSED' && this.bug.status != 'CLOSED') {
+            alert('Status can be changed only to CLOSED');
             return;
           }
 

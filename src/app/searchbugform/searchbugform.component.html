@@ -84,7 +84,6 @@
           <td>Bug Name</td>
           <td>Project ID</td>
           <td>Synopsis</td>
-          <td>Product</td>
           <td>Description</td>
           <td>Submitted Date</td>
           <td>Estimated Time</td>
@@ -101,17 +100,16 @@
             <td>{{ bug.projectId }}</td>
             <td>
               {{ bug.synopsis | ellipsis: 12
-              }}<button
+              }}<button id="readmore"
                 class="btn btn-link"
                 (click)="showDescription(this.bug.synopsis)"
               >
                 ReadMore
               </button>
             </td>
-            <td>{{ bug.product }}</td>
             <td>
               {{ bug.description | ellipsis: 12
-              }}<button
+              }}<button id="readmore"
                 class="btn btn-link"
                 (click)="showDescription(this.bug.description)"
               >

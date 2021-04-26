@@ -21,3 +21,8 @@ tr,tr td:hover{
 body {
 	position: relative;
 }
+
+#readmore{
+  font-size: smaller;
+  font-style: italic;
+}

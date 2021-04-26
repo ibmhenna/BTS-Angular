@@ -11,12 +11,13 @@ export class CreatebugformComponent implements OnInit {
   title: string = 'Createbugform';
   bug: Bug = new Bug();
   bugArray: any;
+  today: Date= new Date();
 
   constructor(private bugService: BugService) { }
 
   save() {
     console.log(this.bug.name);
-    this.bug.status="NEW";
+    this.bug.status = "NEW";
     const observable = this.bugService.save(this.bug);
 
     observable.subscribe(response => {
@@ -26,8 +27,15 @@ export class CreatebugformComponent implements OnInit {
       this.bugArray.push(Object.assign({}, this.bug));
     },
       error => {
-        console.log(error);
-        alert("Please fill all the fields")
+        if (this.bug.eta) {
+          this.today.toDateString()
+          alert('ETA should be future date');
+        }
+        else {
+          console.log(error);
+          alert("Please fill all the fields")
+        }
+
       })
   }
 

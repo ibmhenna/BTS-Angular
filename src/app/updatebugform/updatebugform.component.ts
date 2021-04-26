@@ -10,19 +10,20 @@ import { BugService } from '../bug.service';
 export class UpdatebugformComponent implements OnInit {
   title: string = 'Updatebugform';
   bug: Bug = new Bug();
+  currentStatus: any;
   bugArray: any;
+  today: Date = new Date();
 
   constructor(private bugService: BugService) { }
 
   //get bug details to be prepopuleted
   searchBugbyName(name: any) {
-    let URL = 'http://localhost:8081/bug/';
     let bugname = (<HTMLInputElement>document.getElementById('name')).value;
     if (bugname) {
-      URL = URL + 'name/' + bugname;
       const observable = this.bugService.searchBugbyName1(bugname);
       observable.subscribe(response => {
         this.bugArray = response;
+        this.currentStatus = this.bugArray.status;
         console.log("success");
         if (this.bugArray) {
           this.bug = this.bugArray;
@@ -45,24 +46,75 @@ export class UpdatebugformComponent implements OnInit {
   update() {
     if (this.bug.name) {
       this.bug.name = (<HTMLInputElement>document.getElementById('name')).value;
+      this.bug.status = (<HTMLInputElement>document.getElementById('status')).value;
+
 
       console.log(this.bug);
+
+      console.log(this.bug.status);
+      console.log(this.currentStatus);
+      console.log(this.today)
       const promise = this.bugService.updateBug(this.bug, this.bug.id);
       promise.subscribe((response: any) => {
         console.log(response);
         alert('Bug is Updated')
       },
         error => {
+
+
+          if (this.bug.eta<=this.today) {
+            alert('ETA should be future date');
+          }
+
+          if (this.currentStatus == 'NEW' && (this.bug.status != 'NEW' || this.bug.status != 'ASSIGNED')) {
+            alert('Status can be changed only to ASSIGNED');
+            return;
+          }
+          else if (this.currentStatus == 'ASSIGNED' && (this.bug.status != 'ASSIGNED' || this.bug.status != 'OPEN')) {
+            alert('Status can be changed only to OPEN');
+            return;
+          }
+          else if (this.currentStatus == 'OPEN' && (this.bug.status != 'OPEN' || this.bug.status != 'DEFERRED' || this.bug.status != 'DUPLICATE' || this.bug.status != 'REJECTED' || this.bug.status != 'NOT_A_BUG' || this.bug.status != 'COULD_NOT_REPRODUCE' || this.bug.status != 'NEED_MORE_INFO' || this.bug.status != 'WONT_FIX' || this.bug.status != 'FIXED')) {
+            alert('Status can be changed only to DEFERRED, DUPLICATE, REJECTED, NOT_A_BUG, COULD_NOT_REPRODUCE, NEED_MORE_INFO, WONT_FIX, FIXED');
+            return;
+          }
+          else if (this.currentStatus == 'FIXED' && (this.bug.status != 'FIXED' || this.bug.status != 'PENDING_RETEST')) {
+            alert('Status can be changed only to PENDING_RETEST');
+            return;
+          }
+          else if (this.currentStatus == 'PENDING_RETEST' && (this.bug.status != 'PENDING_RETEST' || this.bug.status != 'RETEST')) {
+            alert('Status can be changed only to RETEST');
+            return;
+          }
+          else if (this.currentStatus == 'RETEST' && (this.bug.status != 'RETEST' || this.bug.status != 'REOPEN' || this.bug.status != 'VERIFIED')) {
+            alert('Status can be changed only to REOPEN or VERIFIED');
+            return;
+          }
+          else if (this.currentStatus == 'REOPEN' && (this.bug.status != 'OPEN' || this.bug.status != 'DEFERRED' || this.bug.status != 'DUPLICATE' || this.bug.status != 'REJECTED' || this.bug.status != 'NOT_A_BUG' || this.bug.status != 'COULD_NOT_REPRODUCE' || this.bug.status != 'NEED_MORE_INFO' || this.bug.status != 'WONT_FIX' || this.bug.status != 'FIXED')) {
+            alert('Status can be changed only to DEFERRED, DUPLICATE, REJECTED, NOT_A_BUG, COULD_NOT_REPRODUCE, NEED_MORE_INFO, WONT_FIX, FIXED');
+            return;
+          }
+          else if ((this.currentStatus == 'VERIFIED' || this.currentStatus == 'WONT_FIX' || this.currentStatus == 'DUPLICATE' || this.currentStatus == 'REJECTED' || this.currentStatus == 'NOT_A_BUG') && (this.bug.status != 'CLOSED')) {
+            alert('Status can be changed only to WONT_FIX, DUPLICATE, REJECTED, NOT_A_BUG, CLOSED');
+            return;
+          }
+          else if ((this.currentStatus == 'COULD_NOT_REPRODUCE' || this.currentStatus == 'NEED_MORE_INFO') && (this.bug.status != 'DEFERRED')) {
+            alert('Status can be changed only to DEFERRED');
+            return;
+          }
+          else if ((this.currentStatus == 'DEFERRED') && (this.bug.status != 'ASSIGNED')) {
+            alert('Status can be changed only to ASSIGNED');
+            return;
+          }
+
           console.log(error);
-          alert('Error Occured')
+          // alert('Error Occured')
         })
     }
     else {
       alert("Enter a valid bug name..")
     }
   }
-
-
 
   ngOnInit(): void {
   }
